@@ -9,22 +9,33 @@
 <%@ page import="java.util.*, model.dto.Post" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>投稿一覧 - もぐログ</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
-    <h1>投稿一覧（もぐログ）</h1>
+<body class="posts">
 
+    <!--Header -->
+    <header>
+        <h1>投稿一覧（もぐログ）</h1>
+    </header>
+
+    <!-- Main Content-->
+    <main class="container">
     <%
         List<Post> posts = (List<Post>) request.getAttribute("posts");
         if (posts != null) {
           for (Post post : posts) {
     %>
-        <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
-            <h2><%= post.getTitle() %></h2>
-            <p>by <%= post.getAuthor() %> at <%= post.getCreatedAt() %></p>
-            <p><%= post.getContent() %></p>
+        <!-- Cards -->
+        <article class="card">
             <img src="<%= post.getImagePath() %>" width="300" alt="Post Image" />
-        </div>
+            <div class="content">
+                <h2 class="title"><%= post.getTitle() %></h2>
+                <p class="meta">by <%= post.getAuthor() %> at <%= post.getCreatedAt() %></p>
+                <p class="comment"><%= post.getContent() %></p>
+            </div>
+        </article>
     <%
             }
         } else {
@@ -33,5 +44,8 @@
     <%
         }
     %>
+    </main>
+
+    <footer>2025 もぐログ</footer>
 </body>
 </html>
