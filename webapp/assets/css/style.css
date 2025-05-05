@@ -206,3 +206,57 @@ h1 {
     font-size: 0.95rem;
     color: #555;
 }/}
+
+/* ================================
+    CREATE LIST PAGE STYLES
+================================ */
+body.create {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7f3e4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#count {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.submit-button {
+    padding: 0.8rem;
+    background-color: #c6a556;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #9c7144;
+}

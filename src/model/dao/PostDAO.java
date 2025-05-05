@@ -1,42 +1,50 @@
 package model.dao;
 
 import model.dto.Post;
-import java.sql.Timestamp;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PostDAO {
 
+    public void insertPost(Post post) throws SQLException {
+        try (Connection conn = DBConnectionManager.getConnection()) {
+            String sql = "INSERT INTO posts (title, content, author, image_path) VALUES (?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, post.getTitle());
+            ps.setString(2, post.getContent());
+            ps.setString(3, post.getAuthor());
+            ps.setString(4, post.getImagePath());
+            ps.executeUpdate();
+        }
+    }
+
     public List<Post> findAll() {
-        List<Post> posts = new ArrayList<>();
+        // 投稿データを格納するためのリストを初期化
+        List<Post> postList = new ArrayList<>();
 
-        posts.add(new Post(
-                1,
-                "Ramen in Shibuya",
-                "Tried the famous tonkotsu ramen today. So rich and creamy!",
-                "mogumogu_user1",
-                "assets/img/ramen.jpg",
-                Timestamp.valueOf("2025-05-01 12:30:00")
-        ));
+        String sql = "select * from posts ORDER BY created_at DESC";
 
-        posts.add(new Post(
-                2,
-                "Strawberry Parfait",
-                "Too pretty to eat... but I did anyway",
-                "mogumogu_user2",
-                "assets/img/parfait.jpg",
-                Timestamp.valueOf("2025-05-02 15:45:00")
-        ));
+        try (Connection conn = DBConnectionManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
 
-        posts.add(new Post(
-                3,
-                "Homemade Bento",
-                "My first attempt at making tamagoyaki!",
-                "mogumogu_user3",
-                "assets/img/bento.jpg",
-                Timestamp.valueOf("2025-05-03 10:15:00")
-        ));
+            while (rs.next()) {
+                Post post = new Post();
+                post.setId(rs.getInt("id"));
+                post.setTitle(rs.getString("title"));
+                post.setContent(rs.getString("content"));
+                post.setAuthor(rs.getString("author"));
+                post.setImagePath(rs.getString("image_path"));
+                post.setCreatedAt(rs.getTimestamp("created_at"));
+                postList.add(post);
+            }
 
-        return posts;
+        } catch (SQLException e) {
+            System.err.println("Error posts: " + e.getMessage());
+        }
+
+        return postList;
     }
 }

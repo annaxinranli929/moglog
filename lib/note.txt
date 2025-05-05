@@ -1,0 +1,33 @@
+💬 3. Add Comments (Optional but Nice)
+Table: comments (post_id, author, comment_text, created_at)
+
+Show under each post
+
+Comment form with validation
+
+🎨 4. Improve Design / CSS
+Make it cute like 小红书!
+
+Rounded corners, hover effects
+
+Use grid/flexbox for layout
+
+Responsive mobile-friendly view
+
+🧪 5. Edge Case Handling
+No image uploaded? Use default.
+
+No posts yet? Show message.
+
+Image too large? Show error.
+
+Special characters in text? Escape for safety (XSS).
+
+☁️ 6. Deployment (Optional for now)
+Later, upload to AWS:
+
+Use AWS RDS for MySQL
+
+Use EC2 or Elastic Beanstalk for app hosting
+
+Or deploy locally with Tomcat and MySQL
