@@ -20,31 +20,116 @@ public class PostDAO {
         }
     }
 
-    public List<Post> findAll() {
-        // 投稿データを格納するためのリストを初期化
-        List<Post> postList = new ArrayList<>();
+    public List<Post> findAll() throws SQLException {
+        List<Post> posts = new ArrayList<>();
+        try (Connection conn = DBConnectionManager.getConnection()) {
+            String sql = "SELECT * FROM posts WHERE deleted = 0 ORDER BY id DESC";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Post post = new Post(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("content"),
+                        rs.getString("author"),
+                        rs.getString("image_path"),
+                        rs.getTimestamp("created_at")
+                );
+                post.setLikes(rs.getInt("likes"));
+                post.setDeleted(rs.getBoolean("deleted"));
+                posts.add(post);
+            }
+        }
+        return posts;
+    }
 
-        String sql = "select * from posts ORDER BY created_at DESC";
+    public Post findById(int id) throws SQLException {
+        try (Connection conn = DBConnectionManager.getConnection()) {
+            String sql = "SELECT * FROM posts WHERE id = ? AND deleted = 0";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Post(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("content"),
+                        rs.getString("author"),
+                        rs.getString("image_path"),
+                        rs.getTimestamp("created_at")
+                );
+            } else {
+                return null;
+            }
+        }
+    }
+
+    public List<Post> findByKeyword(String title) throws SQLException {
+        List<Post> posts = new ArrayList<>();
+        String sql = "SELECT * FROM posts WHERE title LIKE ? AND deleted = 0 ORDER BY id DESC";
 
         try (Connection conn = DBConnectionManager.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, "%" + title + "%");
+            ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Post post = new Post();
-                post.setId(rs.getInt("id"));
-                post.setTitle(rs.getString("title"));
-                post.setContent(rs.getString("content"));
-                post.setAuthor(rs.getString("author"));
-                post.setImagePath(rs.getString("image_path"));
-                post.setCreatedAt(rs.getTimestamp("created_at"));
-                postList.add(post);
+                Post post = new Post(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("content"),
+                        rs.getString("author"),
+                        rs.getString("image_path"),
+                        rs.getTimestamp("created_at")
+                );
+                post.setLikes(rs.getInt("likes"));
+                posts.add(post);
             }
-
-        } catch (SQLException e) {
-            System.err.println("Error posts: " + e.getMessage());
         }
-
-        return postList;
+        return posts;
     }
+
+    public int update(Post post) throws SQLException {
+        try (Connection conn = DBConnectionManager.getConnection()) {
+            String sql = "UPDATE posts SET title = ?, content = ?, author = ?, image_path = ? WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setString(1, post.getTitle());
+            ps.setString(2, post.getContent());
+            ps.setString(3, post.getAuthor());
+            ps.setString(4, post.getImagePath());
+            ps.setInt(5, post.getId());
+
+            return ps.executeUpdate();
+        }
+    }
+
+    public void incrementLikes(int postId) throws SQLException {
+        try (Connection conn = DBConnectionManager.getConnection()) {
+            String sql = "UPDATE posts SET likes = likes + 1 WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, postId);
+            ps.executeUpdate();
+        }
+    }
+
+    public void delete(int id) throws SQLException {
+        try (Connection conn = DBConnectionManager.getConnection()) {
+            String sql = "UPDATE posts SET deleted = 1 WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        }
+    }
+
+    /*
+    public void restore(int id) throws SQLException {
+        try (Connection conn = DBConnectionManager.getConnection()) {
+            String sql = "UPDATE posts SET deleted = 0 WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        }
+    }
+     */
 }

@@ -1,6 +1,5 @@
 package controller;
 
-import model.dao.DBConnectionManager;
 import model.dao.PostDAO;
 import model.dto.Post;
 import utils.HtmlUtils;
@@ -12,8 +11,6 @@ import javax.servlet.http.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @WebServlet("/create-post")

@@ -46,8 +46,18 @@ body.home {
 }
 
 /* -----------------------------------
-    Buttons
+    Password & Buttons
 ----------------------------------- */
+.password-bar {
+    margin-left: 2rem;
+    padding:  0.4rem 1rem 0.4rem 1rem; /* words inside*/
+    font-size: 1rem;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 200px;
+    height: 25px;
+}
+
 .button-link {
     width: 260px;
     height: 260px;
@@ -207,6 +217,22 @@ h1 {
     color: #555;
 }/}
 
+/* -----------------------------------
+    Likes
+----------------------------------- */
+.like-button {
+    background-color: transparent;
+    border: none;
+    color: #e74c3c;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+.like-button:hover {
+    transform: scale(1.1);
+}
+
 /* ================================
     CREATE LIST PAGE STYLES
 ================================ */
@@ -260,3 +286,118 @@ input[type="file"] {
 .submit-button:hover {
     background-color: #9c7144;
 }
+
+/* ================================
+    VIEW POST PAGE STYLES
+================================ */
+body.view {
+    background: #f7f3e4;
+    color: #333;
+    margin: 0;
+}
+.post-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    padding: 24px;
+}
+.post-image {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 1em;
+}
+.post-title {
+    font-size: 16px;
+    margin-bottom: 0.2em;
+}
+.post-meta {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 0.5em;
+}
+.post-content {
+    font-size: 16px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+a.back-link {
+    display: inline-block;
+    margin-top: 2em;
+    color: #c6a556;
+    text-decoration: none;
+    padding-left: 5rem;
+}
+
+/* -----------------------------------
+    View Post Page
+----------------------------------- */
+.view-subtitle {
+    font-family: "Zen Maru Gothic", serif;
+    font-size: 1rem;
+    color: #ae261e;
+    margin-bottom: 0.5rem;
+}
+
+#commentInput {
+    width: 100%;
+    height: 2.5rem;
+    resize: none;
+    transition: height 0.3s ease-in-out;
+}
+
+#commentInput.expanded {
+    height: 6rem;
+}
+
+#extraFields {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: max-height 0.4s ease-in-out
+}
+
+#extraFields.show {
+    max-height: 150px;
+    padding-top: 10px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #c6a556;
+    float: right;
+    margin-top: 5px;
+}
+
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    color: #e74c3c;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+.delete-btn:hover {
+    transform: scale(1.1);
+}
+
+.edit-btn {
+    border: none;
+    color: #c6a556;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+.edit-btn:hover {
+    transform: scale(1.1);
+}
+
+.comment-list {
+    list-style-type: none;
+}
+

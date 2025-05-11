@@ -9,6 +9,8 @@ public class Post {
     private String author;
     private String imagePath;
     private Timestamp createdAt;
+    private int likes;
+    private boolean deleted;
 
     // default constructor
     public Post() {}
@@ -40,4 +42,11 @@ public class Post {
 
     public Timestamp getCreatedAt() { return createdAt; }
     public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
+
+    public int getLikes() { return likes; }
+    public void setLikes(int likes) { this.likes = likes; }
+
+    public boolean isDeleted() {return deleted;}
+
+    public void setDeleted(boolean deleted) {this.deleted = deleted;}
 }
