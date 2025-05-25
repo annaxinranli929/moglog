@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="aws-core-2.25.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/aws-core-2.25.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,404 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ================================
+        INDEX PAGE STYLES
+================================ */
+
+body.home {
+    background-color: #ae261e;
+}
+
+.frame {
+    padding: 20px;
+    border: 15px double #c6a556;
+    height: 90vh;       /* Full viewport height */
+    box-sizing: border-box; /* Include padding + border in height */
+    overflow: hidden;    /* Prevent scrollbars */
+    margin: 30px;           /* Remove margin to prevent scroll */
+}
+
+.center-container {
+    display: flex;
+    justify-content: center; /* horizontal center */
+    align-items: center;     /* vertical center */
+    height: 80vh;           /* full screen height */
+    flex-direction: column;  /* stack elements vertically if needed */
+}
+
+.bigTitle {
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-size: 8rem;
+    margin-bottom: 3rem;
+    color: #f7f3e4;
+    text-shadow: 8px 8px 2px rgba(0, 0, 0, 0.3);
+}
+
+.subTitle {
+    font-family: "Zen Maru Gothic", serif;
+    font-size: 1.2rem;
+    color: #c6a556;
+    margin-bottom: 2rem;
+}
+
+/* -----------------------------------
+    Password & Buttons
+----------------------------------- */
+.password-bar {
+    margin-left: 2rem;
+    padding:  0.4rem 1rem 0.4rem 1rem; /* words inside*/
+    font-size: 1rem;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 200px;
+    height: 25px;
+}
+
+.button-link {
+    width: 260px;
+    height: 260px;
+    background: url('../img/pot.png') no-repeat center center;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.button-link:hover {
+    animation: wokToss 0.7s ease-in-out infinite;
+}
+
+@keyframes wokToss {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(6deg); }
+    50%  { transform: rotate(0deg); }
+    75%  { transform: rotate(-6deg); }
+    100% { transform: rotate(0deg); }
+}
+
+
+/* ================================
+    POST LIST PAGE STYLES
+================================ */
+body.posts {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7f3e4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* -----------------------------------
+    Header
+----------------------------------- */
+header {
+    height: 100px;
+    padding: 2rem 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+h1 {
+    font-family: "Zen Maru Gothic", serif;
+    font-size: 3rem;
+    color: #ae261e;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+.search-bar {
+    padding:  0.4rem 2.5rem 0.4rem 1rem; /* words inside*/
+    font-size: 1rem;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    width: 250px;
+    height: 36px;
+}
+
+.search-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.search-button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* -----------------------------------
+    Layout
+----------------------------------- */
+.layout {
+    display: flex;
+    padding: 2rem 8rem;
+}
+
+.sidebar {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.side-button {
+    background-color: #c6a556;
+    color: white;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.side-button:hover {
+    background-color: #9c7144;
+}
+
+/* -----------------------------------
+    Main
+----------------------------------- */
+.container {
+    flex-grow: 1;
+    padding-left: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* -----------------------------------
+    Card  (Post)
+----------------------------------- */
+.card {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    text-align: left;
+    padding: 1rem;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.card .content {
+    padding: 1rem;
+}
+
+.card .title {
+    font-size: 1.2rem;
+    margin: 0.8rem 0 0.4rem;
+}
+
+.card .comment {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* -----------------------------------
+    Likes
+----------------------------------- */
+.like-button {
+    background-color: transparent;
+    border: none;
+    color: #e74c3c;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+.like-button:hover {
+    transform: scale(1.1);
+}
+
+/* ================================
+    CREATE LIST PAGE STYLES
+================================ */
+body.create {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7f3e4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#count {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.submit-button {
+    padding: 0.8rem;
+    background-color: #c6a556;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #9c7144;
+}
+
+/* ================================
+    VIEW POST PAGE STYLES
+================================ */
+body.view {
+    background: #f7f3e4;
+    color: #333;
+    margin: 0;
+}
+.post-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    padding: 24px;
+}
+.post-image {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 1em;
+}
+.post-title {
+    font-size: 16px;
+    margin-bottom: 0.2em;
+}
+.post-meta {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 0.5em;
+}
+.post-content {
+    font-size: 16px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+a.back-link {
+    display: inline-block;
+    margin-top: 2em;
+    color: #c6a556;
+    text-decoration: none;
+    padding-left: 5rem;
+}
+
+/* -----------------------------------
+    View Post Page
+----------------------------------- */
+.view-subtitle {
+    font-family: "Zen Maru Gothic", serif;
+    font-size: 1rem;
+    color: #ae261e;
+    margin-bottom: 0.5rem;
+}
+
+#commentInput {
+    width: 100%;
+    height: 2.5rem;
+    resize: none;
+    transition: height 0.3s ease-in-out;
+}
+
+#commentInput.expanded {
+    height: 6rem;
+}
+
+#extraFields {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: max-height 0.4s ease-in-out
+}
+
+#extraFields.show {
+    max-height: 150px;
+    padding-top: 10px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #c6a556;
+    float: right;
+    margin-top: 5px;
+}
+
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    color: #e74c3c;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+.delete-btn:hover {
+    transform: scale(1.1);
+}
+
+.edit-btn {
+    border: none;
+    color: #c6a556;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+.edit-btn:hover {
+    transform: scale(1.1);
+}
+
+.comment-list {
+    list-style-type: none;
+}
+

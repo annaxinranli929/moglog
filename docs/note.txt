@@ -1,0 +1,7 @@
+🧭 What is a WAR file?
+WAR = Web Application Archive
+
+It packages everything: .jsp, .java (compiled), web.xml, assets, etc.
+
+It's like a .zip file that Tomcat understands
+
