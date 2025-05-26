@@ -1,0 +1,26 @@
+<DOCTYPE html>
+  <html lang="jp">
+<head>
+    <title>管理員ログイン</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="login">
+  <header>
+      <h1>管理員ログイン</h1>
+  </header>
+  <a class="back-link" href="${pageContext.request.contextPath}/posts">← 投稿一覧へ戻る</a>
+<main class="login-container">
+
+    <% String error = request.getParameter("error"); %>
+    <% if ("1".equals(error)) { %>
+    <div class="error">パスワードが正しくありません。</div>
+    <% } %>
+
+    <form action="login" method="post">
+        <label for="password">パスワード:</label>
+        <input type="password" name="password" id="password" required/>
+        <button type="submit" class="submit-button">ログイン</button>
+    </form>
+</main>
+</body>
+</html>

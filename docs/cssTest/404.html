@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>404 Not Found</title>
+  <style>
+    body {
+        text-align: center;
+        padding: 5rem;
+        font-family: "Noto Sans JP", sans-serif;
+        background-color: #e6d0b0;
+        color:#2c2215;
+
+    }
+    .error-img {
+        max-width: 500px;
+        margin-bottom: 1rem;
+    }
+
+    a {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.5rem 1.2rem;
+    background-color: #ffcc70;
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+  a:hover {
+    background-color: #f0b04c;
+}
+</style>
+</head>
+<body class="error">
+<img src="404.png" alt="検索"  class="error-img" />
+<h1>😢 ページが見つかりません</h1>
+<p>指定されたページは存在しないか、移動されました。</p>
+<a href="<%= request.getContextPath() %>/posts">トップに戻る</a>
+</body>
+</html>
