@@ -5,6 +5,7 @@ C:\Users\annax\IdeaProjects\moglog\src\main\java\controller\DeletePostServlet.ja
 C:\Users\annax\IdeaProjects\moglog\src\main\java\controller\EditPostServlet.java
 C:\Users\annax\IdeaProjects\moglog\src\main\java\controller\LikePostServlet.java
 C:\Users\annax\IdeaProjects\moglog\src\main\java\controller\LoginServlet.java
+C:\Users\annax\IdeaProjects\moglog\src\main\java\controller\LogoutServlet.java
 C:\Users\annax\IdeaProjects\moglog\src\main\java\controller\PostListServlet.java
 C:\Users\annax\IdeaProjects\moglog\src\main\java\controller\ViewPostServlet.java
 C:\Users\annax\IdeaProjects\moglog\src\main\java\dao\CommentDAO.java

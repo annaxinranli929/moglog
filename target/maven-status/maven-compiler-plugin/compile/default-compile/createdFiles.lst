@@ -9,6 +9,7 @@ dao\CommentDAO.class
 controller\DeletePostServlet.class
 model\Post.class
 controller\LikePostServlet.class
+controller\LogoutServlet.class
 controller\PostListServlet.class
 dao\DBTest.class
 controller\AddCommentServlet.class

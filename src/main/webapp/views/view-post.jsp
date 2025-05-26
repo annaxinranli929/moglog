@@ -50,10 +50,18 @@
     <div class="post-content">${post.content}</div>
     <br>
     <a href="${pageContext.request.contextPath}/edit-post?id=${post.id}" class="edit-btn">✏️ 編集する</a>
+
+    <%
+        Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+        if (isAdmin != null && isAdmin) {
+    %>
     <form action="<%= request.getContextPath() %>/delete-post" method="post">
         <input type="hidden" name="id" value="${post.id}">
         <button type="submit" class="delete-btn">🗑️ 削除</button>
     </form>
+    <%
+        }
+    %>
 
     <h3 class="view-subtitle">コメントを投稿</h3>
 

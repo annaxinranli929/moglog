@@ -46,18 +46,8 @@ body.home {
 }
 
 /* -----------------------------------
-    Password & Buttons
+    Buttons
 ----------------------------------- */
-.password-bar {
-    margin-left: 2rem;
-    padding:  0.4rem 1rem 0.4rem 1rem; /* words inside*/
-    font-size: 1rem;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    width: 200px;
-    height: 25px;
-}
-
 .button-link {
     width: 260px;
     height: 260px;
@@ -168,13 +158,18 @@ h1 {
     background-color: #9c7144;
 }
 
+.admin-disabled {
+    background-color: #9c7144;
+}
+
+
 /* -----------------------------------
     Main
 ----------------------------------- */
 .container {
     flex-grow: 1;
     padding-left: 2rem;
-    max-width: 1200px;
+    max-width: 1250px;
     margin: 0 auto;
 }
 
@@ -235,7 +230,7 @@ h1 {
 }
 
 /* ================================
-    CREATE LIST PAGE STYLES
+    CREATE POST PAGE STYLES
 ================================ */
 body.create {
     font-family: 'Segoe UI', sans-serif;
@@ -332,7 +327,7 @@ a.back-link {
 }
 
 /* -----------------------------------
-    View Post Page
+    Comments
 ----------------------------------- */
 .view-subtitle {
     font-family: "Zen Maru Gothic", serif;
@@ -402,3 +397,30 @@ a.back-link {
     list-style-type: none;
 }
 
+/* ================================
+        LOGIN PAGE STYLES
+================================ */
+body.login {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7f3e4;
+    color: #333;
+    line-height: 1.6;
+}
+.login-container {
+    max-width: 500px;
+    margin: 5rem auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 1rem 0;
+}
+.error {
+    color: red;
+    margin-bottom: 1rem;
+}

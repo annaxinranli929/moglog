@@ -27,20 +27,41 @@
     <h1>食の書</h1>
     <div class="search-container">
         <form action="${pageContext.request.contextPath}/posts" method="get" class="search-container">
-        <input type="text" name="keyword" class="search-bar" placeholder="タイトルを検索">
-        <button type="submit" class="search-button">
-            <img src="${pageContext.request.contextPath}/img/sicon.png" alt="検索"/>
-        </button>
+            <input type="text" name="keyword" class="search-bar" placeholder="タイトルを検索">
+            <button type="submit" class="search-button">
+                <img src="${pageContext.request.contextPath}/img/sicon.png" alt="検索"/>
+            </button>
         </form>
     </div>
 </header>
+<!-- logout message -->
+<%
+    String msg = request.getParameter("msg");
+    if ("logout".equals(msg)) {
+%>
+<div class="logout-message" id="logoutMsg">ログアウトしました。</div>
+<%
+    }
+%>
 
 <!-- layout -->
 <div class="layout">
     <aside class="sidebar">
+        <%
+            Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+        %>
+
         <a href="posts" class="side-button">すべての投稿</a>
         <a href="${pageContext.request.contextPath}/views/create-post.jsp" class="side-button">投稿作成</a>
-        <a href="posts" class="side-button">ログイン(未実装)</a>
+
+        <% if (isAdmin != null && isAdmin) { %>
+        <span class="side-button admin-disabled">管理員モード中</span>
+        <a href="${pageContext.request.contextPath}/logout" class="side-button">ログアウト</a>
+        <% } else { %>
+        <a href="${pageContext.request.contextPath}/login" class="side-button">管理員ログイン</a>
+        <% } %>
+
+
     </aside>
 
     <!-- Main Content-->
@@ -59,7 +80,7 @@
 
             <article class="card">
                 <a href="view-post?id=<%= post.getId() %>" class="card-link">
-                <img src="<%= post.getImagePath() %>" width="300" alt="Post Image"/></a>
+                    <img src="<%= post.getImagePath() %>" width="300" alt="Post Image"/></a>
                 <div class="content">
                     <h2 class="title"><%= post.getTitle() %>
                     </h2>
@@ -82,5 +103,6 @@
         </div>
     </main>
 </div>
+<script src="${pageContext.request.contextPath}/js/form.js" defer></script>
 </body>
 </html>

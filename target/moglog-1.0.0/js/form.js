@@ -31,7 +31,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    console.log("JS is working!");
+    // エラーメッセージ
+    const logoutMsg = document.getElementById("logoutMsg");
+    if (logoutMsg) {
+        setTimeout(() => {
+            logoutMsg.style.transition = "opacity 1s";
+            logoutMsg.style.opacity = "0";
+            setTimeout(() => logoutMsg.remove(), 1000);
+        }, 3000);
+    }
 });
 
 // comment area

@@ -74,7 +74,7 @@ public class CreatePostServlet extends HttpServlet {
             }
         } else {
             // 画像未選択時はデフォルト画像を設定
-            imagePath = "https://moglog-img.s3.ap-southeast-2.amazonaws.com/uploads/default.png"; // 未設定
+            imagePath = "img/default.png"; // 未設定
         }
 
         // 投稿データをDTO(Postオブジェクト)にまとめる

@@ -15,6 +15,13 @@ public class DeletePostServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
 
+        Boolean isAdmin = (Boolean) request.getSession().getAttribute("isAdmin");
+        if (isAdmin == null || !isAdmin) {
+            // Protection
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
+        }
+
         String idParam = request.getParameter("id");
 
         if (idParam == null || idParam.isBlank()) {
